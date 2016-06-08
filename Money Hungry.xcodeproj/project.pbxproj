@@ -38,10 +38,13 @@
 		2CFD275B1CE3C3B600EB121F /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD275A1CE3C3B600EB121F /* ground.png */; };
 		2CFD27A11CE5104E00EB121F /* thud.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD27A01CE5104E00EB121F /* thud.wav */; };
 		2CFD27A31CE510AE00EB121F /* coin_drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD27A21CE510AE00EB121F /* coin_drop.wav */; };
+<<<<<<< HEAD
 		2CFE31001D08A181007759E0 /* redOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE30FF1D08A181007759E0 /* redOrb.png */; };
 		2CFE31021D08A185007759E0 /* greenOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE31011D08A185007759E0 /* greenOrb.png */; };
 		2CFE31041D08AAA3007759E0 /* Blip_Select.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE31031D08AAA3007759E0 /* Blip_Select.mp3 */; };
 		2CFE31061D08AAA7007759E0 /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE31051D08AAA7007759E0 /* laser.wav */; };
+=======
+>>>>>>> master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,10 +102,13 @@
 		2CFD275A1CE3C3B600EB121F /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		2CFD27A01CE5104E00EB121F /* thud.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thud.wav; sourceTree = "<group>"; };
 		2CFD27A21CE510AE00EB121F /* coin_drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin_drop.wav; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		2CFE30FF1D08A181007759E0 /* redOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redOrb.png; sourceTree = "<group>"; };
 		2CFE31011D08A185007759E0 /* greenOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenOrb.png; sourceTree = "<group>"; };
 		2CFE31031D08AAA3007759E0 /* Blip_Select.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Blip_Select.mp3; sourceTree = "<group>"; };
 		2CFE31051D08AAA7007759E0 /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
+=======
+>>>>>>> master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,10 +198,13 @@
 		2CEEDAF01CDBD3080079DBD7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				2CFE30FF1D08A181007759E0 /* redOrb.png */,
 				2CFE31051D08AAA7007759E0 /* laser.wav */,
 				2CFE31031D08AAA3007759E0 /* Blip_Select.mp3 */,
 				2CFE31011D08A185007759E0 /* greenOrb.png */,
+=======
+>>>>>>> master
 				2CA354B71CF78C2F00744D93 /* Kane.png */,
 				2CF2898B1CEF8C49003DD0C6 /* pause_icon.png */,
 				2CA3546D1CF760E000744D93 /* NewGame.png */,
@@ -335,19 +344,28 @@
 				2CEEDAC11CDBD2840079DBD7 /* GameScene.sks in Resources */,
 				2CA3546E1CF760E000744D93 /* NewGame.png in Resources */,
 				2CFD275B1CE3C3B600EB121F /* ground.png in Resources */,
+<<<<<<< HEAD
 				2CFE31041D08AAA3007759E0 /* Blip_Select.mp3 in Resources */,
+=======
+>>>>>>> master
 				2CEEDACD1CDBD2840079DBD7 /* LaunchScreen.storyboard in Resources */,
 				2CF2898A1CEF6E15003DD0C6 /* reset.png in Resources */,
 				2CF289861CEE43DE003DD0C6 /* coin.atlasc in Resources */,
 				2CA354B61CF7748C00744D93 /* Directions.png in Resources */,
 				2CEEDAF61CDBD3080079DBD7 /* Background.png in Resources */,
 				2CFD27A11CE5104E00EB121F /* thud.wav in Resources */,
+<<<<<<< HEAD
 				2CFE31001D08A181007759E0 /* redOrb.png in Resources */,
 				2CEEDAFA1CDBD3080079DBD7 /* flap.wav in Resources */,
 				2CFE31061D08AAA7007759E0 /* laser.wav in Resources */,
 				2CEEDACA1CDBD2840079DBD7 /* Assets.xcassets in Resources */,
 				2CA3546A1CF74E4400744D93 /* SplashScreen.png in Resources */,
 				2CFE31021D08A185007759E0 /* greenOrb.png in Resources */,
+=======
+				2CEEDAFA1CDBD3080079DBD7 /* flap.wav in Resources */,
+				2CEEDACA1CDBD2840079DBD7 /* Assets.xcassets in Resources */,
+				2CA3546A1CF74E4400744D93 /* SplashScreen.png in Resources */,
+>>>>>>> master
 				2CEEDAC81CDBD2840079DBD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
