@@ -1,0 +1,1 @@
+Ryan BackaGoldComplete game with Splash Screen, Menu Scene, Credits Scene, How To Scene, and Game Scene. It works on both iPhones and iPads and has what I’ve been told is an addictive and fun gameplay. I had a great time designing this and thank you for all you have taught me this month.
