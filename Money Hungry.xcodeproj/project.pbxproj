@@ -38,6 +38,8 @@
 		2CFD275B1CE3C3B600EB121F /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD275A1CE3C3B600EB121F /* ground.png */; };
 		2CFD27A11CE5104E00EB121F /* thud.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD27A01CE5104E00EB121F /* thud.wav */; };
 		2CFD27A31CE510AE00EB121F /* coin_drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD27A21CE510AE00EB121F /* coin_drop.wav */; };
+		2CFE31001D08A181007759E0 /* redOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE30FF1D08A181007759E0 /* redOrb.png */; };
+		2CFE31021D08A185007759E0 /* greenOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE31011D08A185007759E0 /* greenOrb.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		2CFD275A1CE3C3B600EB121F /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		2CFD27A01CE5104E00EB121F /* thud.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thud.wav; sourceTree = "<group>"; };
 		2CFD27A21CE510AE00EB121F /* coin_drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin_drop.wav; sourceTree = "<group>"; };
+		2CFE30FF1D08A181007759E0 /* redOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redOrb.png; sourceTree = "<group>"; };
+		2CFE31011D08A185007759E0 /* greenOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenOrb.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 		2CEEDAF01CDBD3080079DBD7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2CFE30FF1D08A181007759E0 /* redOrb.png */,
+				2CFE31011D08A185007759E0 /* greenOrb.png */,
 				2CA354B71CF78C2F00744D93 /* Kane.png */,
 				2CF2898B1CEF8C49003DD0C6 /* pause_icon.png */,
 				2CA3546D1CF760E000744D93 /* NewGame.png */,
@@ -329,9 +335,11 @@
 				2CA354B61CF7748C00744D93 /* Directions.png in Resources */,
 				2CEEDAF61CDBD3080079DBD7 /* Background.png in Resources */,
 				2CFD27A11CE5104E00EB121F /* thud.wav in Resources */,
+				2CFE31001D08A181007759E0 /* redOrb.png in Resources */,
 				2CEEDAFA1CDBD3080079DBD7 /* flap.wav in Resources */,
 				2CEEDACA1CDBD2840079DBD7 /* Assets.xcassets in Resources */,
 				2CA3546A1CF74E4400744D93 /* SplashScreen.png in Resources */,
+				2CFE31021D08A185007759E0 /* greenOrb.png in Resources */,
 				2CEEDAC81CDBD2840079DBD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

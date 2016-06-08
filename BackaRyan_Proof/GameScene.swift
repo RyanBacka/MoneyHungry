@@ -14,6 +14,8 @@ struct PhysicsCategory {
   static let coinCategory : UInt32  = 0x1 << 3
   static let bombCategory : UInt32  = 0x1 << 4
   static let borderCategory : UInt32 = 0x1 << 5
+  static let greenOrbCategory : UInt32 = 0x1 << 6
+  static let redOrbCategory : UInt32 = 0x1 << 7
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -30,6 +32,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   let ground = SKSpriteNode(imageNamed: "ground")
   let resetBtn = SKSpriteNode(imageNamed: "reset")
   let pauseBtn = SKSpriteNode(imageNamed: "pause_icon")
+  let redOrb = SKSpriteNode(imageNamed: "redOrb")
+  let greenOrb = SKSpriteNode(imageNamed: "greenOrb")
   
   let thud = SKAudioNode(fileNamed: "thud.wav")
   let ching = SKAudioNode(fileNamed: "coin_drop.wav")
@@ -61,6 +65,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   var coinCount1 = Int()
   var coinCount2 = Int()
+  var redOrbCount = Int()
+  var greenOrbCount = Int()
   
   let screenSize: CGRect = UIScreen.mainScreen().bounds
   var screenWidth = CGFloat()
@@ -213,6 +219,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     resetBtn.setScale(0.7)
     self.addChild(resetBtn)
     resetBtn.runAction(SKAction.scaleTo(1.0, duration: 0.3))
+  }
+  
+  func greenOrbCreate(){
+    let xPos = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * maxX
+    greenOrb.position = CGPointMake(xPos, self.frame.height / 2 + self.frame.height / 2.2)
+    greenOrb.setScale(0.25*widthRatio)
+    greenOrb.zPosition = 2
+    greenOrb.physicsBody = SKPhysicsBody(circleOfRadius: greenOrb.size.width/2)
+    greenOrb.physicsBody?.categoryBitMask = PhysicsCategory.greenOrbCategory
+    greenOrb.physicsBody?.contactTestBitMask = PhysicsCategory.birdCategory | PhysicsCategory.groundCategory
+    greenOrb.physicsBody?.affectedByGravity = true
+    greenOrb.physicsBody?.dynamic = true
+    addChild(greenOrb)
+  }
+  
+  func redOrbCreate(){
+    let xPos = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * maxX
+    redOrb.position = CGPointMake(xPos, self.frame.height / 2 + self.frame.height / 2.2)
+    redOrb.setScale(0.25*widthRatio)
+    redOrb.zPosition = 2
+    redOrb.physicsBody = SKPhysicsBody(circleOfRadius: redOrb.size.width/2)
+    redOrb.physicsBody?.categoryBitMask = PhysicsCategory.redOrbCategory
+    redOrb.physicsBody?.contactTestBitMask = PhysicsCategory.birdCategory | PhysicsCategory.groundCategory
+    redOrb.physicsBody?.affectedByGravity = true
+    redOrb.physicsBody?.dynamic = true
+    addChild(redOrb)
   }
   
   // function to reset the scene
@@ -376,12 +408,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       thud.runAction(SKAction.play())
     }
     
-    //handles if the coin or bomb reaches the ground
-    if firstBody.categoryBitMask == PhysicsCategory.coinCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory || firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory {
+    //handles if the bomb reaches the ground
+    if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory {
       firstBody.node?.removeFromParent()
     }
-    if firstBody.categoryBitMask == PhysicsCategory.groundCategory && secondBody.categoryBitMask == PhysicsCategory.coinCategory || firstBody.categoryBitMask == PhysicsCategory.groundCategory && secondBody.categoryBitMask == PhysicsCategory.bombCategory{
+    if firstBody.categoryBitMask == PhysicsCategory.groundCategory &&  secondBody.categoryBitMask == PhysicsCategory.bombCategory{
       secondBody.node?.removeFromParent()
+    }
+    
+    // handles if the coin reaches the ground
+    if firstBody.categoryBitMask == PhysicsCategory.coinCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory {
+      firstBody.node?.removeFromParent()
+      coinCount1 = 0
+      coinCount2 = 0
+    }
+    if firstBody.categoryBitMask == PhysicsCategory.groundCategory && secondBody.categoryBitMask == PhysicsCategory.coinCategory {
+      secondBody.node?.removeFromParent()
+      coinCount1 = 0
+      coinCount2 = 0
     }
     
     // handles if the bird runs into the bomb
@@ -397,9 +441,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // handles if the bird runs into the coin
-    if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.coinCategory || firstBody.categoryBitMask == PhysicsCategory.coinCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory{
+    if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.coinCategory {
       ching.runAction(SKAction.play())
       secondBody.node?.removeFromParent()
+      score = score+1
+      scoreLabel.text = "\(score)"
+      coinCount1 = coinCount1 + 1
+      coinCount2 = coinCount2 + 1
+      switch score{
+      case 11:
+        actionHappened = false
+      case 18:
+        actionHappened = false
+      case 26:
+        actionHappened = false
+      case 35:
+        actionHappened = false
+      case 45:
+        actionHappened = false
+      case 56:
+        actionHappened = false
+      case 68:
+        actionHappened = false
+      case 81:
+        actionHappened = false
+      case 95:
+        actionHappened = false
+      case 110:
+        actionHappened = false
+      default:
+        break
+      }
+      
+      if coinCount1 == 10 {
+        coinCount1 = 0
+      }
+      
+      if coinCount2 == 25 {
+        coinCount2 = 0
+      }
+    }
+    
+    // handles if the bird runs into the coin
+    if firstBody.categoryBitMask == PhysicsCategory.coinCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
+      ching.runAction(SKAction.play())
+      firstBody.node?.removeFromParent()
       score = score+1
       scoreLabel.text = "\(score)"
       switch score{
