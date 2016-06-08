@@ -39,6 +39,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   let ching = SKAudioNode(fileNamed: "coin_drop.wav")
   let flapping = SKAudioNode(fileNamed: "flap.wav")
   let explosion = SKAudioNode(fileNamed: "explosion.wav")
+  let blip = SKAudioNode(fileNamed: "laser.wav")
+  let blip2 = SKAudioNode(fileNamed: "Blip_Select.mp3")
   
   var bombAction = SKAction()
   var duration = NSTimeInterval()
@@ -160,11 +162,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     explosion.autoplayLooped = false
     thud.autoplayLooped = false
     flapping.autoplayLooped = true
+    blip.autoplayLooped = false
+    blip2.autoplayLooped = false
+    ching.autoplayLooped = false
     addChild(flapping)
     addChild(explosion)
     addChild(thud)
-    
-    ching.autoplayLooped = false
+    addChild(blip)
+    addChild(blip2)
     addChild(ching)
     
     // sets the scene as the physics contact delegate
@@ -224,7 +229,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   func greenOrbCreate(){
     let xPos = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * maxX
     greenOrb.position = CGPointMake(xPos, self.frame.height / 2 + self.frame.height / 2.2)
-    greenOrb.setScale(0.25*widthRatio)
+    greenOrb.setScale(0.05*widthRatio)
     greenOrb.zPosition = 2
     greenOrb.physicsBody = SKPhysicsBody(circleOfRadius: greenOrb.size.width/2)
     greenOrb.physicsBody?.categoryBitMask = PhysicsCategory.greenOrbCategory
@@ -237,7 +242,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   func redOrbCreate(){
     let xPos = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * maxX
     redOrb.position = CGPointMake(xPos, self.frame.height / 2 + self.frame.height / 2.2)
-    redOrb.setScale(0.25*widthRatio)
+    redOrb.setScale(0.05*widthRatio)
     redOrb.zPosition = 2
     redOrb.physicsBody = SKPhysicsBody(circleOfRadius: redOrb.size.width/2)
     redOrb.physicsBody?.categoryBitMask = PhysicsCategory.redOrbCategory
@@ -408,11 +413,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       thud.runAction(SKAction.play())
     }
     
-    //handles if the bomb reaches the ground
-    if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory {
+    //handles if the bomb or orbs reach the ground
+    if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory || firstBody.categoryBitMask == PhysicsCategory.redOrbCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory || firstBody.categoryBitMask == PhysicsCategory.greenOrbCategory && secondBody.categoryBitMask == PhysicsCategory.groundCategory{
       firstBody.node?.removeFromParent()
     }
-    if firstBody.categoryBitMask == PhysicsCategory.groundCategory &&  secondBody.categoryBitMask == PhysicsCategory.bombCategory{
+    if firstBody.categoryBitMask == PhysicsCategory.groundCategory &&  secondBody.categoryBitMask == PhysicsCategory.bombCategory || firstBody.categoryBitMask == PhysicsCategory.groundCategory &&  secondBody.categoryBitMask == PhysicsCategory.redOrbCategory || firstBody.categoryBitMask == PhysicsCategory.groundCategory &&  secondBody.categoryBitMask == PhysicsCategory.greenOrbCategory{
       secondBody.node?.removeFromParent()
     }
     
@@ -475,10 +480,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       
       if coinCount1 == 10 {
         coinCount1 = 0
+        redOrbCreate()
       }
       
       if coinCount2 == 25 {
         coinCount2 = 0
+        greenOrbCreate()
       }
     }
     
@@ -512,6 +519,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       default:
         break
       }
+    }
+    
+    if firstBody.categoryBitMask == PhysicsCategory.greenOrbCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
+      blip.runAction(SKAction.play())
+      firstBody.node?.removeFromParent()
+      greenOrbCount = greenOrbCount + 1
+      coinCount2 = 0
+    }
+    if firstBody.categoryBitMask == PhysicsCategory.birdCategory  && secondBody.categoryBitMask == PhysicsCategory.greenOrbCategory {
+      blip.runAction(SKAction.play())
+      secondBody.node?.removeFromParent()
+      greenOrbCount = greenOrbCount + 1
+      coinCount2 = 0
+    }
+    
+    if firstBody.categoryBitMask == PhysicsCategory.redOrbCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
+      blip2.runAction(SKAction.play())
+      firstBody.node?.removeFromParent()
+      redOrbCount = redOrbCount + 1
+      coinCount1 = 0
+    }
+    if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.redOrbCategory {
+      blip2.runAction(SKAction.play())
+      secondBody.node?.removeFromParent()
+      redOrbCount = redOrbCount + 1
+      coinCount1 = 0
     }
     
   }
