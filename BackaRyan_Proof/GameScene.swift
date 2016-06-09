@@ -41,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   let explosion = SKAudioNode(fileNamed: "explosion.wav")
   let blip = SKAudioNode(fileNamed: "laser.wav")
   let blip2 = SKAudioNode(fileNamed: "Blip_Select.mp3")
+  let defuse = SKAudioNode(fileNamed: "drum.mp3")
   
   var bombAction = SKAction()
   var duration = NSTimeInterval()
@@ -171,12 +172,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     blip.autoplayLooped = false
     blip2.autoplayLooped = false
     ching.autoplayLooped = false
+    defuse.autoplayLooped = false
     addChild(flapping)
     addChild(explosion)
     addChild(thud)
     addChild(blip)
     addChild(blip2)
     addChild(ching)
+    addChild(defuse)
     
     // sets the scene as the physics contact delegate
     physicsWorld.contactDelegate = self
@@ -478,6 +481,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       }
     } else if orbOn == true{
       if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
+        defuse.runAction(SKAction.play())
         firstBody.node!.removeFromParent()
         orbCount = orbCount - 1
         if orbCount == 0 {
@@ -486,6 +490,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
       }
       if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.bombCategory{
+        defuse.runAction(SKAction.play())
         secondBody.node!.removeFromParent()
         orbCount = orbCount - 1
         if orbCount == 0 {
