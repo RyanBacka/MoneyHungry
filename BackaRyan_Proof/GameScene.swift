@@ -34,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   let pauseBtn = SKSpriteNode(imageNamed: "pause_icon")
   let redOrb = SKSpriteNode(imageNamed: "redOrb")
   let greenOrb = SKSpriteNode(imageNamed: "greenOrb")
+  let mainMenuBtn = SKSpriteNode(imageNamed: "MainMenu")
   
   let thud = SKAudioNode(fileNamed: "thud.wav")
   let ching = SKAudioNode(fileNamed: "coin_drop.wav")
@@ -254,11 +255,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   //creates the reset button
   func createReset(){
     resetBtn.size = CGSizeMake(200, 100)
-    resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+    resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 6)
     resetBtn.zPosition = 6
-    resetBtn.setScale(0.7)
+    resetBtn.setScale(0.9)
     self.addChild(resetBtn)
-    resetBtn.runAction(SKAction.scaleTo(1.0, duration: 0.3))
   }
   
   // function to reset the scene
@@ -272,6 +272,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     orbCount = 0
     orbOn = false
     orbLabel.text = "Orb: Off"
+    createScene()
+  }
+  
+  func createMainMenu(){
+    mainMenuBtn.size = CGSizeMake(200, 100)
+    mainMenuBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 5)
+    mainMenuBtn.zPosition = 6
+    mainMenuBtn.setScale(0.9)
+    self.addChild(mainMenuBtn)
+    
+  }
+  
+  func mainMenu(){
     let menuScene = MenuScene(size: view!.bounds.size)
     let transition = SKTransition.fadeWithDuration(0.15)
     view?.presentScene(menuScene, transition: transition)
@@ -307,6 +320,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       if died == true{
         if resetBtn.containsPoint(touched){
           resetScene()
+        }
+        if mainMenuBtn.containsPoint(touched){
+          mainMenu()
         }
       }
     }
@@ -468,6 +484,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       coinCount2 = 0
     }
     
+    //checks to see if you have collected an orb and determines which logic to use based on that
     if orbOn == false{
       // handles if the bird runs into the bomb
       if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory ||
@@ -478,8 +495,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         secondBody.node!.removeFromParent()
         died = true
         createReset()
+        createMainMenu()
       }
     } else if orbOn == true{
+      // handles if the bird hits a bomb while orb is on and turns orb off if last orb is used
       if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
         defuse.runAction(SKAction.play())
         firstBody.node!.removeFromParent()
@@ -500,7 +519,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       }
     }
     
-    // handles if the bird runs into the coin
+    // handles if the bird runs into the coin and adds orb production
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.coinCategory {
       ching.runAction(SKAction.play())
       secondBody.node?.removeFromParent()
@@ -551,7 +570,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-    // handles if the bird runs into the coin
+    // handles if the bird runs into the coin and adds orb production
     if firstBody.categoryBitMask == PhysicsCategory.coinCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
       ching.runAction(SKAction.play())
       firstBody.node?.removeFromParent()

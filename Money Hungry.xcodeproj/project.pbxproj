@@ -12,6 +12,7 @@
 		2C9C26851D08C311002699F5 /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26841D08C311002699F5 /* laser.wav */; };
 		2C9C26871D08C316002699F5 /* Blip_Select.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26861D08C316002699F5 /* Blip_Select.mp3 */; };
 		2C9C26891D09E21E002699F5 /* drum.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26881D09E21E002699F5 /* drum.mp3 */; };
+		2C9C268B1D09E772002699F5 /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C268A1D09E772002699F5 /* MainMenu.png */; };
 		2CA3546A1CF74E4400744D93 /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA354691CF74E4400744D93 /* SplashScreen.png */; };
 		2CA3546C1CF75CA000744D93 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA3546B1CF75CA000744D93 /* MenuScene.swift */; };
 		2CA3546E1CF760E000744D93 /* NewGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA3546D1CF760E000744D93 /* NewGame.png */; };
@@ -68,6 +69,7 @@
 		2C9C26841D08C311002699F5 /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
 		2C9C26861D08C316002699F5 /* Blip_Select.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Blip_Select.mp3; sourceTree = "<group>"; };
 		2C9C26881D09E21E002699F5 /* drum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drum.mp3; sourceTree = "<group>"; };
+		2C9C268A1D09E772002699F5 /* MainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu.png; sourceTree = "<group>"; };
 		2CA354691CF74E4400744D93 /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
 		2CA3546B1CF75CA000744D93 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		2CA3546D1CF760E000744D93 /* NewGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGame.png; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				2C9C26801D08C301002699F5 /* greenOrb.png */,
+				2C9C268A1D09E772002699F5 /* MainMenu.png */,
 				2C9C26861D08C316002699F5 /* Blip_Select.mp3 */,
 				2C9C26841D08C311002699F5 /* laser.wav */,
 				2C9C26881D09E21E002699F5 /* drum.mp3 */,
@@ -337,6 +340,7 @@
 				2CA354721CF760E600744D93 /* HowTo.png in Resources */,
 				2C9C26811D08C301002699F5 /* greenOrb.png in Resources */,
 				2CEEDAF91CDBD3080079DBD7 /* explosion.wav in Resources */,
+				2C9C268B1D09E772002699F5 /* MainMenu.png in Resources */,
 				2C9C26871D08C316002699F5 /* Blip_Select.mp3 in Resources */,
 				2CEEDAC11CDBD2840079DBD7 /* GameScene.sks in Resources */,
 				2CA3546E1CF760E000744D93 /* NewGame.png in Resources */,
