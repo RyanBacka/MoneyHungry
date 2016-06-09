@@ -60,21 +60,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   var scoreLabel = SKLabelNode()
   var level = 1
   var levelLbl = SKLabelNode()
+  var orbLabel = SKLabelNode()
   
   var died = Bool()
   var reset = SKSpriteNode()
   
   var coinCount1 = Int()
   var coinCount2 = Int()
-  var redOrbCount = Int()
-  var greenOrbCount = Int()
   
   let screenSize: CGRect = UIScreen.mainScreen().bounds
   var screenWidth = CGFloat()
   var screenHeight = CGFloat()
   var widthRatio = CGFloat()
   
-  
+  var orbOn = false
+  var orbCount = 0
+  var droppedBombs = 0
   
   override func didMoveToView(view: SKView) {
     //used to scale the images
@@ -106,6 +107,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     levelLbl.zPosition = 1
     levelLbl.fontSize = 40
     self.addChild(levelLbl)
+    
+    orbLabel.position = CGPoint(x: self.frame.width / 2 + self.frame.width / 2.4, y: self.frame.height / 2 - self.frame.height / 2.05)
+    orbLabel.text = "Orb: Off"
+    orbLabel.fontName = "04b_19"
+    orbLabel.zPosition = 3
+    orbLabel.fontSize = 30
+    self.addChild(orbLabel)
     
     //creates and places the pause button
     pauseBtn.position = CGPoint(x: self.frame.width / 2 - self.frame.width / 2.2, y: self.frame.height / 2 - self.frame.height / 2.15)
@@ -428,16 +436,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       coinCount2 = 0
     }
     
-    // handles if the bird runs into the bomb
-    if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory ||
-      firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.bombCategory {
-      explosion.runAction(SKAction.play())
-      flapping.runAction(SKAction.pause())
-      firstBody.node!.removeFromParent()
-      secondBody.node!.removeFromParent()
-      died = true
-      self.removeAllActions()
-      createReset()
+    if orbOn == false{
+      // handles if the bird runs into the bomb
+      if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory ||
+        firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.bombCategory {
+        explosion.runAction(SKAction.play())
+        flapping.runAction(SKAction.pause())
+        firstBody.node!.removeFromParent()
+        secondBody.node!.removeFromParent()
+        died = true
+        self.removeAllActions()
+        createReset()
+      }
+    } else if orbOn == true{
+      if firstBody.categoryBitMask == PhysicsCategory.bombCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
+        firstBody.node!.removeFromParent()
+        orbCount = orbCount - 1
+        if orbCount == 0 {
+          orbOn = false
+          orbLabel.text = "Orb: Off"
+        }
+      }
+      if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.bombCategory{
+        secondBody.node!.removeFromParent()
+        orbCount = orbCount - 1
+        if orbCount == 0 {
+          orbOn = false
+          orbLabel.text = "Orb: Off"
+        }
+      }
     }
     
     // handles if the bird runs into the coin
@@ -534,13 +561,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if firstBody.categoryBitMask == PhysicsCategory.greenOrbCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
       blip.runAction(SKAction.play())
       firstBody.node?.removeFromParent()
-      greenOrbCount = greenOrbCount + 1
+      orbCount = orbCount + 5
+      orbOn = true
+      orbLabel.text = "Orb: On"
       coinCount2 = 0
     }
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory  && secondBody.categoryBitMask == PhysicsCategory.greenOrbCategory {
       blip.runAction(SKAction.play())
       secondBody.node?.removeFromParent()
-      greenOrbCount = greenOrbCount + 1
+      orbCount = orbCount + 5
+      orbOn = true
+      orbLabel.text = "Orb: On"
       coinCount2 = 0
     }
     
@@ -548,13 +579,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if firstBody.categoryBitMask == PhysicsCategory.redOrbCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
       blip2.runAction(SKAction.play())
       firstBody.node?.removeFromParent()
-      redOrbCount = redOrbCount + 1
+      orbCount = orbCount + 1
+      orbOn = true
+      orbLabel.text = "Orb: On"
       coinCount1 = 0
     }
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.redOrbCategory {
       blip2.runAction(SKAction.play())
       secondBody.node?.removeFromParent()
-      redOrbCount = redOrbCount + 1
+      orbCount = orbCount + 1
+      orbOn = true
+      orbLabel.text = "Orb: On"
       coinCount1 = 0
     }
   }
