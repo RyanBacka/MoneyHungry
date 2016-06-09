@@ -567,7 +567,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinCount2 = 0
         greenOrbCreate()
       }
-
+      
     }
     
     // handles if the bird runs into the coin and adds orb production
@@ -618,7 +618,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinCount2 = 0
         greenOrbCreate()
       }
-
+      
     }
     
     //handles if the bird hits the green orb
