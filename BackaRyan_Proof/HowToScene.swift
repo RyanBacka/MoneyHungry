@@ -16,6 +16,8 @@ class HowToScene: SKScene {
   let movementLbl = SKLabelNode()
   let bombLbl = SKLabelNode()
   let coinLbl = SKLabelNode()
+  let redOrbLabel = SKLabelNode()
+  let greenOrbLabel = SKLabelNode()
   
   let birdSheet = Bird()
   var bird1: SKSpriteNode!
@@ -24,6 +26,8 @@ class HowToScene: SKScene {
   var coin: SKSpriteNode!
   
   let bomb = SKSpriteNode(imageNamed: "bomb")
+  let greenOrb = SKSpriteNode(imageNamed: "greenOrb")
+  let redOrb = SKSpriteNode(imageNamed: "redOrb")
   
   let screenSize: CGRect = UIScreen.mainScreen().bounds
   var screenWidth = CGFloat()
@@ -41,7 +45,7 @@ class HowToScene: SKScene {
     addChild(bgImage)
     
     // describes how to move
-    movementLbl.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 5)
+    movementLbl.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 3.5)
     movementLbl.text = "Tap the screen to move              to where you want to go"
     movementLbl.fontName = "04b_19"
     movementLbl.fontColor = UIColor.blackColor()
@@ -50,7 +54,7 @@ class HowToScene: SKScene {
     self.addChild(movementLbl)
     
     // tells you to avoid bombs
-    bombLbl.position = CGPoint(x: self.frame.width / 2 - self.frame.width / 15, y: self.frame.height / 2)
+    bombLbl.position = CGPoint(x: self.frame.width / 2 - self.frame.width / 15, y: self.frame.height / 2 + self.frame.height / 7)
     bombLbl.text = "Move to avoid "
     bombLbl.fontName = "04b_19"
     bombLbl.fontColor = UIColor.blackColor()
@@ -59,7 +63,7 @@ class HowToScene: SKScene {
     self.addChild(bombLbl)
     
     // tells you to collect coins
-    coinLbl.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 5)
+    coinLbl.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 22)
     coinLbl.text = "Collect as many          as you can "
     coinLbl.fontName = "04b_19"
     coinLbl.fontColor = UIColor.blackColor()
@@ -67,18 +71,34 @@ class HowToScene: SKScene {
     coinLbl.fontSize = 25
     self.addChild(coinLbl)
     
+    redOrbLabel.position = CGPoint(x: self.frame.width / 2 + self.frame.width / 27, y: self.frame.height / 2 - self.frame.height / 4.5)
+    redOrbLabel.text = "        allows you difuse one bomb"
+    redOrbLabel.fontName = "04b_19"
+    redOrbLabel.fontColor = UIColor.blackColor()
+    redOrbLabel.zPosition = 3
+    redOrbLabel.fontSize = 25
+    self.addChild(redOrbLabel)
+    
+    greenOrbLabel.position = CGPoint(x: self.frame.width / 2 + self.frame.width / 27, y: self.frame.height / 2 - self.frame.height / 2.7)
+    greenOrbLabel.text = "        allows you difuse three bombs"
+    greenOrbLabel.fontName = "04b_19"
+    greenOrbLabel.fontColor = UIColor.blackColor()
+    greenOrbLabel.zPosition = 3
+    greenOrbLabel.fontSize = 25
+    self.addChild(greenOrbLabel)
+    
     //animation for the bird and adds bird to scene
     bird1 = SKSpriteNode(texture: birdSheet.frame_1())
     let fly = SKAction.animateWithTextures(birdSheet.frame_(), timePerFrame: 0.18)
     let birdSequence = SKAction.repeatActionForever(fly)
     bird1.runAction(birdSequence)
     bird1.setScale(0.15*widthRatio)
-    bird1.position = CGPointMake(self.size.width/2 - self.size.width/90, self.size.height/2 + self.size.height/4.5 )
+    bird1.position = CGPointMake(self.size.width/2 - self.size.width/90, self.size.height/2 + self.size.height/3.5 )
     bird1.zPosition = 1
     addChild(bird1)
     
     // adds bomb to scene
-    bomb.position = CGPointMake(self.frame.width / 2 + self.frame.width / 12, self.frame.height / 2  + self.frame.height / 22)
+    bomb.position = CGPointMake(self.frame.width / 2 + self.frame.width / 12, self.frame.height / 2  + self.frame.height / 5)
     bomb.setScale(0.25*widthRatio)
     bomb.zPosition = 1
     addChild(bomb)
@@ -89,9 +109,21 @@ class HowToScene: SKScene {
     let coinSequence = SKAction.repeatActionForever(spin)
     coin.runAction(coinSequence)
     coin.setScale(0.8*widthRatio)
-    coin.position = CGPointMake(self.frame.width / 2 + self.frame.width / 32, self.frame.height / 2  - self.frame.height / 5.3)
+    coin.position = CGPointMake(self.frame.width / 2 + self.frame.width / 32, self.frame.height / 2  - self.frame.height / 28)
     coin.zPosition = 1
     addChild(coin)
+    
+    //adds red orb to scene
+    redOrb.position = CGPointMake(self.frame.width / 2 - self.frame.width / 4.5, self.frame.height / 2  - self.frame.height / 4.8)
+    redOrb.setScale(0.05*widthRatio)
+    redOrb.zPosition = 1
+    addChild(redOrb)
+    
+    //adds green orb to scene
+    greenOrb.position = CGPointMake(self.frame.width / 2 - self.frame.width / 4.5, self.frame.height / 2  - self.frame.height / 2.9)
+    greenOrb.setScale(0.05*widthRatio)
+    greenOrb.zPosition = 1
+    addChild(greenOrb)
     
   }
   

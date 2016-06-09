@@ -75,7 +75,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   var orbOn = false
   var orbCount = 0
-  var droppedBombs = 0
   
   override func didMoveToView(view: SKView) {
     //used to scale the images
@@ -261,6 +260,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   // function to reset the scene
   func resetScene(){
+    self.removeAllActions()
+    self.removeAllChildren()
+    died = false
+    gameStarted = false
+    score = 0
+    level = 1
+    orbCount = 0
+    orbOn = false
+    orbLabel.text = "Orb: Off"
     let menuScene = MenuScene(size: view!.bounds.size)
     let transition = SKTransition.fadeWithDuration(0.15)
     view?.presentScene(menuScene, transition: transition)
@@ -397,6 +405,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         duration = 0.5
         dropBomb(duration)
         actionHappened = true
+      case 126:
+        removeActionForKey("bombAction")
+        level = 13
+        levelLbl.text = "Level: \(level)"
+        duration = 0.4
+        dropBomb(duration)
+        actionHappened = true
+      case 143:
+        removeActionForKey("bombAction")
+        level = 14
+        levelLbl.text = "Level: \(level)"
+        duration = 0.3
+        dropBomb(duration)
+        actionHappened = true
+      case 161:
+        removeActionForKey("bombAction")
+        level = 15
+        levelLbl.text = "Level: \(level)"
+        duration = 0.25
+        dropBomb(duration)
+        actionHappened = true
       default:
         break
       }
@@ -445,7 +474,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         firstBody.node!.removeFromParent()
         secondBody.node!.removeFromParent()
         died = true
-        self.removeAllActions()
         createReset()
       }
     } else if orbOn == true{
@@ -496,6 +524,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         actionHappened = false
       case 110:
         actionHappened = false
+      case 126:
+        actionHappened = false
+      case 143:
+        actionHappened = false
+      case 161:
+        actionHappened = false
       default:
         break
       }
@@ -541,6 +575,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         actionHappened = false
       case 110:
         actionHappened = false
+      case 126:
+        actionHappened = false
+      case 143:
+        actionHappened = false
+      case 161:
+        actionHappened = false
       default:
         break
       }
@@ -561,7 +601,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if firstBody.categoryBitMask == PhysicsCategory.greenOrbCategory && secondBody.categoryBitMask == PhysicsCategory.birdCategory {
       blip.runAction(SKAction.play())
       firstBody.node?.removeFromParent()
-      orbCount = orbCount + 5
+      orbCount = orbCount + 3
       orbOn = true
       orbLabel.text = "Orb: On"
       coinCount2 = 0
@@ -569,7 +609,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory  && secondBody.categoryBitMask == PhysicsCategory.greenOrbCategory {
       blip.runAction(SKAction.play())
       secondBody.node?.removeFromParent()
-      orbCount = orbCount + 5
+      orbCount = orbCount + 3
       orbOn = true
       orbLabel.text = "Orb: On"
       coinCount2 = 0

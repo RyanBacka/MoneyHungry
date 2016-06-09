@@ -155,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				2CF289811CEE3C2C003DD0C6 /* Bird.swift */,
-				2CF289871CEE43E4003DD0C6 /* Coin.swift */,
 				2CEEDABE1CDBD2840079DBD7 /* AppDelegate.swift */,
+				2CF289871CEE43E4003DD0C6 /* Coin.swift */,
 				2CEEDAC01CDBD2840079DBD7 /* GameScene.sks */,
 				2CEEDAC21CDBD2840079DBD7 /* GameScene.swift */,
 				2CA3546B1CF75CA000744D93 /* MenuScene.swift */,
