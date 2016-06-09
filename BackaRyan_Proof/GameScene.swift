@@ -281,10 +281,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     mainMenuBtn.zPosition = 6
     mainMenuBtn.setScale(0.9)
     self.addChild(mainMenuBtn)
-    
   }
   
   func mainMenu(){
+    self.removeAllActions()
+    self.removeAllChildren()
+    died = false
+    gameStarted = false
+    score = 0
+    level = 1
+    orbCount = 0
+    orbOn = false
+    orbLabel.text = "Orb: Off"
     let menuScene = MenuScene(size: view!.bounds.size)
     let transition = SKTransition.fadeWithDuration(0.15)
     view?.presentScene(menuScene, transition: transition)
