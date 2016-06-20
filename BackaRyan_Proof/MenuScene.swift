@@ -10,8 +10,13 @@ import SpriteKit
 import GameKit
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 class MenuScene: SKScene, GKGameCenterControllerDelegate{
   
+=======
+class MenuScene: SKScene{
+  var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
+>>>>>>> origin/master
 =======
 class MenuScene: SKScene{
   var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
@@ -86,7 +91,11 @@ class MenuScene: SKScene{
         view?.presentScene(howToScene, transition: transition)
       } else if leaderboardBtn.containsPoint(touched){
 <<<<<<< HEAD
+<<<<<<< HEAD
         showLeader()
+=======
+        GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
+>>>>>>> origin/master
 =======
         GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
 >>>>>>> origin/master

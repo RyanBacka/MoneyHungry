@@ -8,15 +8,21 @@
 
 /* Begin PBXBuildFile section */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		2C06683A1D18646A00FDF028 /* Leaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0668391D18646A00FDF028 /* Leaderboard.png */; };
 		2C06683C1D18647A00FDF028 /* Share.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06683B1D18647A00FDF028 /* Share.png */; };
 =======
+=======
+>>>>>>> origin/master
 		2C0668361D184B6900FDF028 /* gpg.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C0668351D184B6900FDF028 /* gpg.bundle */; };
 		2C0668381D184B7C00FDF028 /* gpg.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2C0668371D184B7C00FDF028 /* gpg.framework */; };
 		2C1B34F41D12EE6D00F192E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B34F31D12EE6D00F192E2 /* SignInViewController.swift */; };
 		2C1B34F61D12FC6D00F192E2 /* Leaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1B34F51D12FC6D00F192E2 /* Leaderboard.png */; };
 		2C1B35001D13370700F192E2 /* Share.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1B34FF1D13370700F192E2 /* Share.png */; };
 		2C1B35021D1352E500F192E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C1B35011D1352E500F192E2 /* GoogleService-Info.plist */; };
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 		2C9C26811D08C301002699F5 /* greenOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26801D08C301002699F5 /* greenOrb.png */; };
 		2C9C26831D08C30F002699F5 /* redOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26821D08C30F002699F5 /* redOrb.png */; };
@@ -79,9 +85,12 @@
 
 /* Begin PBXFileReference section */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		2C0668391D18646A00FDF028 /* Leaderboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaderboard.png; sourceTree = "<group>"; };
 		2C06683B1D18647A00FDF028 /* Share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Share.png; sourceTree = "<group>"; };
 =======
+=======
+>>>>>>> origin/master
 		2C0668351D184B6900FDF028 /* gpg.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = gpg.bundle; path = "Pods/GooglePlayGames/gpg-cpp-sdk/ios/gpg.bundle"; sourceTree = "<group>"; };
 		2C0668371D184B7C00FDF028 /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = "Pods/GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework"; sourceTree = "<group>"; };
 		2C1B34EC1D11D3CC00F192E2 /* Money Hungry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Money Hungry-Bridging-Header.h"; path = "../Money Hungry-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -89,6 +98,9 @@
 		2C1B34F51D12FC6D00F192E2 /* Leaderboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaderboard.png; sourceTree = "<group>"; };
 		2C1B34FF1D13370700F192E2 /* Share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Share.png; sourceTree = "<group>"; };
 		2C1B35011D1352E500F192E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 		2C9C26801D08C301002699F5 /* greenOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenOrb.png; sourceTree = "<group>"; };
 		2C9C26821D08C30F002699F5 /* redOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redOrb.png; sourceTree = "<group>"; };
@@ -242,8 +254,13 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				2C06683B1D18647A00FDF028 /* Share.png */,
 				2C0668391D18646A00FDF028 /* Leaderboard.png */,
+=======
+				2C1B34FF1D13370700F192E2 /* Share.png */,
+				2C1B34F51D12FC6D00F192E2 /* Leaderboard.png */,
+>>>>>>> origin/master
 =======
 				2C1B34FF1D13370700F192E2 /* Share.png */,
 				2C1B34F51D12FC6D00F192E2 /* Leaderboard.png */,

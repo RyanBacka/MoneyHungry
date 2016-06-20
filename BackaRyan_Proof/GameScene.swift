@@ -9,7 +9,10 @@
 import SpriteKit
 import Social
 <<<<<<< HEAD
+<<<<<<< HEAD
 import GameKit
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 
@@ -88,8 +91,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
   var kClientID = "431231126719-dajh1k7n7rms75g55mnggq0aqons2ii8.apps.googleusercontent.com"
   
+<<<<<<< HEAD
   
   let leaderboardID = "MHleaderboard62016"
+=======
+>>>>>>> origin/master
   
   override func didMoveToView(view: SKView) {
     //used to scale the images
@@ -279,7 +285,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     
     leaderboardBtn.size = CGSizeMake(200, 100)
 <<<<<<< HEAD
+<<<<<<< HEAD
     leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
+=======
+   leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
+>>>>>>> origin/master
 =======
    leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
 >>>>>>> origin/master
@@ -294,6 +304,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     self.addChild(shareBtn)
   }
   
+<<<<<<< HEAD
 <<<<<<< HEAD
   
   //send high score to leaderboard
@@ -313,6 +324,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
           print ("Error: \(error)")
         }
       })
+=======
+ 
+  func setHighScore(){
+    print("You're here")
+    let newScore = GPGScore.init(leaderboardId: leaderboardID)
+    newScore.value = Int64(score)
+    newScore.scoreTag = "New High Score"
+    newScore.submitScoreWithCompletionHandler { (report, error) in
+      if report != nil{
+        print(report.description)
+        if report.isHighScoreForLocalPlayerToday == true{
+          print("Good JOb")
+        }
+      } else {
+        print(error.description)
+      }
+>>>>>>> origin/master
     }
   }
   
@@ -345,7 +373,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   // function to reset the scene
   func resetScene(){
 <<<<<<< HEAD
+<<<<<<< HEAD
     setHighScore(score)
+=======
+    setHighScore()
+>>>>>>> origin/master
 =======
     setHighScore()
 >>>>>>> origin/master
@@ -364,7 +396,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   
   func mainMenu(){
 <<<<<<< HEAD
+<<<<<<< HEAD
     setHighScore(score)
+=======
+    setHighScore()
+>>>>>>> origin/master
 =======
     setHighScore()
 >>>>>>> origin/master
@@ -424,8 +460,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         }
         if leaderboardBtn.containsPoint(touched){
 <<<<<<< HEAD
+<<<<<<< HEAD
           setHighScore(score)
           showLeader()
+=======
+          setHighScore()
+          GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
+>>>>>>> origin/master
 =======
           setHighScore()
           GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)

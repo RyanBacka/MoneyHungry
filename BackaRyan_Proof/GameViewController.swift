@@ -22,6 +22,12 @@ class GameViewController: UIViewController, GPGStatusDelegate{
     
     GPGManager.sharedInstance().statusDelegate = self;
     
+<<<<<<< HEAD
+=======
+    
+    GPGManager.sharedInstance().statusDelegate = self;
+    
+>>>>>>> origin/master
     presentScene()
     
   }
@@ -44,6 +50,7 @@ class GameViewController: UIViewController, GPGStatusDelegate{
   }
   
 <<<<<<< HEAD
+<<<<<<< HEAD
   //initiate gamecenter
   func authenticateLocalPlayer(){
     
@@ -60,6 +67,8 @@ class GameViewController: UIViewController, GPGStatusDelegate{
       }
     }
   }
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
   
