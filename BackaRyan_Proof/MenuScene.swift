@@ -7,19 +7,27 @@
 //
 
 import SpriteKit
+import GameKit
 
-class MenuScene: SKScene {
+<<<<<<< HEAD
+class MenuScene: SKScene, GKGameCenterControllerDelegate{
+  
+=======
+class MenuScene: SKScene{
+  var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
+>>>>>>> origin/master
   
   // creation of button nodes
   let bgImage = SKSpriteNode(imageNamed: "Background")
   let newGameBtn = SKSpriteNode(imageNamed: "NewGame")
   let creditsBtn = SKSpriteNode(imageNamed: "Credits")
   let howToBtn = SKSpriteNode(imageNamed: "HowTo")
+  let leaderboardBtn = SKSpriteNode(imageNamed: "Leaderboard")
   
   let screenSize: CGRect = UIScreen.mainScreen().bounds
   var screenWidth = CGFloat()
   var widthRatio = CGFloat()
-
+  
   override func didMoveToView(view: SKView) {
     
     screenWidth = screenSize.width
@@ -40,17 +48,23 @@ class MenuScene: SKScene {
     
     // sets the credits button
     creditsBtn.size = CGSizeMake(200, 100)
-    creditsBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 3.5)
+    creditsBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 10)
     creditsBtn.zPosition = 1
     creditsBtn.setScale(0.9*widthRatio)
     self.addChild(creditsBtn)
     
     // sets the how to button
     howToBtn.size = CGSizeMake(200, 100)
-    howToBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+    howToBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 10)
     howToBtn.zPosition = 1
     howToBtn.setScale(0.9*widthRatio)
     self.addChild(howToBtn)
+    
+    leaderboardBtn.size = CGSizeMake(200, 100)
+    leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 3.5)
+    leaderboardBtn.zPosition = 1
+    leaderboardBtn.setScale(0.9*widthRatio)
+    self.addChild(leaderboardBtn)
     
   }
   
@@ -70,8 +84,28 @@ class MenuScene: SKScene {
         let howToScene = HowToScene(size: view!.bounds.size)
         let transition = SKTransition.fadeWithDuration(0.15)
         view?.presentScene(howToScene, transition: transition)
+      } else if leaderboardBtn.containsPoint(touched){
+<<<<<<< HEAD
+        showLeader()
+=======
+        GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
+>>>>>>> origin/master
       }
     }
+  }
+  
+  func showLeader() {
+    let vc = self.view?.window?.rootViewController
+    let gc = GKGameCenterViewController()
+    gc.gameCenterDelegate = self
+    vc?.presentViewController(gc, animated: true, completion: nil)
+  }
+  
+  //hides leaderboard screen
+  func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController)
+  {
+    gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    
   }
   
 }

@@ -8,12 +8,25 @@
 
 import UIKit
 import SpriteKit
+import GameKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GPGStatusDelegate{
+  
+  
+  var kClientID = "431231126719-dajh1k7n7rms75g55mnggq0aqons2ii8.apps.googleusercontent.com"
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    authenticateLocalPlayer()
     
+    
+    GPGManager.sharedInstance().statusDelegate = self;
+    
+    presentScene()
+    
+  }
+  
+  func presentScene(){
     let scene = MenuScene(size: view.bounds.size)
     // Configure the view.
     let skView = view as! SKView
@@ -30,6 +43,26 @@ class GameViewController: UIViewController {
     skView.presentScene(scene)
   }
   
+<<<<<<< HEAD
+  //initiate gamecenter
+  func authenticateLocalPlayer(){
+    
+    let localPlayer = GKLocalPlayer.localPlayer()
+    
+    localPlayer.authenticateHandler = {(viewController, error) -> Void in
+      
+      if (viewController != nil) {
+        self.presentViewController(viewController!, animated: true, completion: nil)
+      }
+        
+      else {
+        print((GKLocalPlayer.localPlayer().authenticated))
+      }
+    }
+  }
+=======
+>>>>>>> origin/master
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Release any cached data, images, etc that aren't in use.
@@ -38,4 +71,15 @@ class GameViewController: UIViewController {
   override func prefersStatusBarHidden() -> Bool {
     return true
   }
+  
+  func didFinishGamesSignInWithError(error: NSError!) {
+    if (error != nil) {
+      print("Signed in!")
+    } else {
+      print("recieved error \(error) while signing in")
+    }
+  }
+  
+  
+  
 }

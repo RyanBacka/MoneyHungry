@@ -7,6 +7,11 @@
 //
 
 import SpriteKit
+import Social
+<<<<<<< HEAD
+import GameKit
+=======
+>>>>>>> origin/master
 
 struct PhysicsCategory {
   static let birdCategory : UInt32  = 0x1 << 1
@@ -18,7 +23,7 @@ struct PhysicsCategory {
   static let redOrbCategory : UInt32 = 0x1 << 7
 }
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelegate {
   
   
   
@@ -35,6 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   let redOrb = SKSpriteNode(imageNamed: "redOrb")
   let greenOrb = SKSpriteNode(imageNamed: "greenOrb")
   let mainMenuBtn = SKSpriteNode(imageNamed: "MainMenu")
+  let leaderboardBtn = SKSpriteNode(imageNamed: "Leaderboard")
+  let shareBtn = SKSpriteNode(imageNamed: "Share")
   
   let thud = SKAudioNode(fileNamed: "thud.wav")
   let ching = SKAudioNode(fileNamed: "coin_drop.wav")
@@ -77,6 +84,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   var orbOn = false
   var orbCount = 0
+                        
+  var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
+  var kClientID = "431231126719-dajh1k7n7rms75g55mnggq0aqons2ii8.apps.googleusercontent.com"
+  
+  
+  let leaderboardID = "MHleaderboard62016"
   
   override func didMoveToView(view: SKView) {
     //used to scale the images
@@ -110,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     self.addChild(levelLbl)
     
     orbLabel.position = CGPoint(x: self.frame.width / 2 + self.frame.width / 2.4, y: self.frame.height / 2 - self.frame.height / 2.05)
-    orbLabel.text = "Orb: Off"
+    orbLabel.text = "Orbs: \(orbCount)"
     orbLabel.fontName = "04b_19"
     orbLabel.zPosition = 3
     orbLabel.fontSize = 30
@@ -169,12 +182,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //sets up the sounds to be used later
     explosion.autoplayLooped = false
     thud.autoplayLooped = false
-    flapping.autoplayLooped = true
     blip.autoplayLooped = false
     blip2.autoplayLooped = false
     ching.autoplayLooped = false
     defuse.autoplayLooped = false
-    addChild(flapping)
     addChild(explosion)
     addChild(thud)
     addChild(blip)
@@ -253,38 +264,110 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   //creates the reset button
-  func createReset(){
+  func createMenu(){
     resetBtn.size = CGSizeMake(200, 100)
-    resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 6)
+    resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 9)
     resetBtn.zPosition = 6
-    resetBtn.setScale(0.9)
+    resetBtn.setScale(0.7)
     self.addChild(resetBtn)
+    
+    mainMenuBtn.size = CGSizeMake(200, 100)
+    mainMenuBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 3)
+    mainMenuBtn.zPosition = 6
+    mainMenuBtn.setScale(0.7)
+    self.addChild(mainMenuBtn)
+    
+    leaderboardBtn.size = CGSizeMake(200, 100)
+<<<<<<< HEAD
+    leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
+=======
+   leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
+>>>>>>> origin/master
+    leaderboardBtn.zPosition = 6
+    leaderboardBtn.setScale(0.7)
+    self.addChild(leaderboardBtn)
+    
+    shareBtn.size = CGSizeMake(200, 100)
+    shareBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 3)
+    shareBtn.zPosition = 6
+    shareBtn.setScale(0.7)
+    self.addChild(shareBtn)
   }
+  
+<<<<<<< HEAD
+  
+  //send high score to leaderboard
+  func setHighScore(score:Int) {
+    
+    //check if user is signed in
+    if GKLocalPlayer.localPlayer().authenticated {
+      
+      let scoreReporter = GKScore(leaderboardIdentifier: leaderboardID) //leaderboard id here
+      
+      scoreReporter.value = Int64(score) //score variable here (same as above)
+      
+      let scoreArray: [GKScore] = [scoreReporter]
+      
+      GKScore.reportScores(scoreArray, withCompletionHandler: { (error) in
+        if error != nil {
+          print ("Error: \(error)")
+        }
+      })
+    }
+  }
+  
+  //hides leaderboard screen
+  func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController)
+  {
+    gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    
+=======
+ 
+  func setHighScore(){
+    print("You're here")
+    let newScore = GPGScore.init(leaderboardId: leaderboardID)
+    newScore.value = Int64(score)
+    newScore.scoreTag = "New High Score"
+    newScore.submitScoreWithCompletionHandler { (report, error) in
+      if report != nil{
+        print(report.description)
+        if report.isHighScoreForLocalPlayerToday == true{
+          print("Good JOb")
+        }
+      } else {
+        print(error.description)
+      }
+    }
+>>>>>>> origin/master
+  }
+
   
   // function to reset the scene
   func resetScene(){
-    self.removeAllActions()
+<<<<<<< HEAD
+    setHighScore(score)
+=======
+    setHighScore()
+>>>>>>> origin/master
     self.removeAllChildren()
     died = false
     gameStarted = false
     score = 0
     level = 1
     orbCount = 0
+    coinCount1 = 0
+    coinCount2 = 0
     orbOn = false
-    orbLabel.text = "Orb: Off"
+    orbLabel.text = "Orbs: \(orbCount)"
     createScene()
   }
   
-  func createMainMenu(){
-    mainMenuBtn.size = CGSizeMake(200, 100)
-    mainMenuBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 5)
-    mainMenuBtn.zPosition = 6
-    mainMenuBtn.setScale(0.9)
-    self.addChild(mainMenuBtn)
-  }
-  
   func mainMenu(){
-    self.removeAllActions()
+<<<<<<< HEAD
+    setHighScore(score)
+=======
+    setHighScore()
+>>>>>>> origin/master
     self.removeAllChildren()
     died = false
     gameStarted = false
@@ -292,7 +375,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     level = 1
     orbCount = 0
     orbOn = false
-    orbLabel.text = "Orb: Off"
+    orbLabel.text = "Orbs: \(orbCount)"
     let menuScene = MenuScene(size: view!.bounds.size)
     let transition = SKTransition.fadeWithDuration(0.15)
     view?.presentScene(menuScene, transition: transition)
@@ -308,6 +391,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let bombSpawnDelay = SKAction.sequence([spawnBomb,bombDelay])
     bombAction = SKAction.repeatActionForever(bombSpawnDelay)
     self.runAction(bombAction, withKey: "bombAction")
+  }
+  
+  func showLeader() {
+    var vc = self.view?.window?.rootViewController
+    var gc = GKGameCenterViewController()
+    gc.gameCenterDelegate = self
+    vc?.presentViewController(gc, animated: true, completion: nil)
   }
   
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -332,11 +422,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if mainMenuBtn.containsPoint(touched){
           mainMenu()
         }
+        if leaderboardBtn.containsPoint(touched){
+<<<<<<< HEAD
+          setHighScore(score)
+          showLeader()
+=======
+          setHighScore()
+          GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
+>>>>>>> origin/master
+        }
+        if shareBtn.containsPoint(touched){
+          let controller = self.view?.window?.rootViewController as! GameViewController
+          
+          if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            facebookSheet.setInitialText("I scored \(score) in the new Money Hungry App. What is your High Score?")
+            controller.presentViewController(facebookSheet, animated: true, completion: nil)
+          } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            controller.presentViewController(alert, animated: true, completion: nil)
+          }
+        }
       }
     }
     
     // on first touch bombs and coins start generating randomly across the screen
     if gameStarted == false{
+      flapping.autoplayLooped = true
+      addChild(flapping)
       gameStarted = true
       // creates coins at a 3 second interval
       let spawnCoin = SKAction.runBlock {
@@ -501,9 +615,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         flapping.runAction(SKAction.pause())
         firstBody.node!.removeFromParent()
         secondBody.node!.removeFromParent()
+        self.removeAllActions()
         died = true
-        createReset()
-        createMainMenu()
+        createMenu()
+        
       }
     } else if orbOn == true{
       // handles if the bird hits a bomb while orb is on and turns orb off if last orb is used
@@ -513,7 +628,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         orbCount = orbCount - 1
         if orbCount == 0 {
           orbOn = false
-          orbLabel.text = "Orb: Off"
+          orbLabel.text = "Orbs: \(orbCount)"
         }
       }
       if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.bombCategory{
@@ -522,7 +637,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         orbCount = orbCount - 1
         if orbCount == 0 {
           orbOn = false
-          orbLabel.text = "Orb: Off"
+          orbLabel.text = "Orbs: \(orbCount)"
         }
       }
     }
@@ -635,7 +750,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       firstBody.node?.removeFromParent()
       orbCount = orbCount + 3
       orbOn = true
-      orbLabel.text = "Orb: On"
+      orbLabel.text = "Orbs: \(orbCount)"
       coinCount2 = 0
     }
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory  && secondBody.categoryBitMask == PhysicsCategory.greenOrbCategory {
@@ -643,7 +758,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       secondBody.node?.removeFromParent()
       orbCount = orbCount + 3
       orbOn = true
-      orbLabel.text = "Orb: On"
+      orbLabel.text = "Orbs: \(orbCount)"
       coinCount2 = 0
     }
     
@@ -653,7 +768,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       firstBody.node?.removeFromParent()
       orbCount = orbCount + 1
       orbOn = true
-      orbLabel.text = "Orb: On"
+      orbLabel.text = "Orbs: \(orbCount)"
       coinCount1 = 0
     }
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.redOrbCategory {
@@ -661,7 +776,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       secondBody.node?.removeFromParent()
       orbCount = orbCount + 1
       orbOn = true
-      orbLabel.text = "Orb: On"
+      orbLabel.text = "Orbs: \(orbCount)"
       coinCount1 = 0
     }
   }
@@ -683,10 +798,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //linear interpolation for moving the bird
     if let destination = destination {
       let distanceLeft = sqrt(pow(currentPosition.x - destination.x, 2) + pow(currentPosition.y - destination.y, 2))
-      print(distanceLeft)
       if distanceLeft >= 10{
         let distanceToTravel = CGFloat(delta!) * CGFloat(defaultBirdSpeed)
-        print(distanceToTravel)
         let angle = atan2(currentPosition.y - destination.y, currentPosition.x - destination.x)
         let yOffset = distanceToTravel * sin(angle)
         let xOffset = distanceToTravel * cos(angle)
