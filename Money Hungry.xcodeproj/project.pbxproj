@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0668361D184B6900FDF028 /* gpg.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C0668351D184B6900FDF028 /* gpg.bundle */; };
+		2C0668381D184B7C00FDF028 /* gpg.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2C0668371D184B7C00FDF028 /* gpg.framework */; };
+		2C1B34F41D12EE6D00F192E2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B34F31D12EE6D00F192E2 /* SignInViewController.swift */; };
+		2C1B34F61D12FC6D00F192E2 /* Leaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1B34F51D12FC6D00F192E2 /* Leaderboard.png */; };
+		2C1B35001D13370700F192E2 /* Share.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1B34FF1D13370700F192E2 /* Share.png */; };
+		2C1B35021D1352E500F192E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C1B35011D1352E500F192E2 /* GoogleService-Info.plist */; };
 		2C9C26811D08C301002699F5 /* greenOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26801D08C301002699F5 /* greenOrb.png */; };
 		2C9C26831D08C30F002699F5 /* redOrb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26821D08C30F002699F5 /* redOrb.png */; };
 		2C9C26851D08C311002699F5 /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C26841D08C311002699F5 /* laser.wav */; };
@@ -44,6 +50,9 @@
 		2CFD275B1CE3C3B600EB121F /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD275A1CE3C3B600EB121F /* ground.png */; };
 		2CFD27A11CE5104E00EB121F /* thud.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD27A01CE5104E00EB121F /* thud.wav */; };
 		2CFD27A31CE510AE00EB121F /* coin_drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CFD27A21CE510AE00EB121F /* coin_drop.wav */; };
+		3F4CDD1F0D2749FECC25861C /* Pods_Money_Hungry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 502C9D84EAC98D2BC06246EB /* Pods_Money_Hungry.framework */; };
+		5D690E31FCE95F5A80BFF259 /* Pods_Money_HungryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA744F32800135C2506393EB /* Pods_Money_HungryTests.framework */; };
+		E13545AEA8E7E45FD27D53E1 /* Pods_Money_HungryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEF19D348BD761EE46C4F53 /* Pods_Money_HungryUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +73,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C0668351D184B6900FDF028 /* gpg.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = gpg.bundle; path = "Pods/GooglePlayGames/gpg-cpp-sdk/ios/gpg.bundle"; sourceTree = "<group>"; };
+		2C0668371D184B7C00FDF028 /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = "Pods/GooglePlayGames/gpg-cpp-sdk/ios/gpg.framework"; sourceTree = "<group>"; };
+		2C1B34EC1D11D3CC00F192E2 /* Money Hungry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Money Hungry-Bridging-Header.h"; path = "../Money Hungry-Bridging-Header.h"; sourceTree = "<group>"; };
+		2C1B34F31D12EE6D00F192E2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		2C1B34F51D12FC6D00F192E2 /* Leaderboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaderboard.png; sourceTree = "<group>"; };
+		2C1B34FF1D13370700F192E2 /* Share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Share.png; sourceTree = "<group>"; };
+		2C1B35011D1352E500F192E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C9C26801D08C301002699F5 /* greenOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenOrb.png; sourceTree = "<group>"; };
 		2C9C26821D08C30F002699F5 /* redOrb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redOrb.png; sourceTree = "<group>"; };
 		2C9C26841D08C311002699F5 /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
@@ -107,6 +123,15 @@
 		2CFD275A1CE3C3B600EB121F /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		2CFD27A01CE5104E00EB121F /* thud.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thud.wav; sourceTree = "<group>"; };
 		2CFD27A21CE510AE00EB121F /* coin_drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin_drop.wav; sourceTree = "<group>"; };
+		36D320D3C68CDBEA7F95B9E0 /* Pods-Money Hungry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Hungry.release.xcconfig"; path = "Pods/Target Support Files/Pods-Money Hungry/Pods-Money Hungry.release.xcconfig"; sourceTree = "<group>"; };
+		502C9D84EAC98D2BC06246EB /* Pods_Money_Hungry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Money_Hungry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CFE3861316E98A3FE1FF237 /* Pods-Money HungryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money HungryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Money HungryTests/Pods-Money HungryTests.release.xcconfig"; sourceTree = "<group>"; };
+		7C9721D5015D6B2A38FBD41B /* Pods-Money HungryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money HungryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Money HungryUITests/Pods-Money HungryUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9AEF19D348BD761EE46C4F53 /* Pods_Money_HungryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Money_HungryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B74EBF45998DF587F6228DCB /* Pods-Money HungryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money HungryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Money HungryTests/Pods-Money HungryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA744F32800135C2506393EB /* Pods_Money_HungryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Money_HungryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9B7C2DAC605202DDD2AE29A /* Pods-Money HungryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money HungryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Money HungryUITests/Pods-Money HungryUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FFED605A3AA5FFEB6522B0FF /* Pods-Money Hungry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Hungry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Money Hungry/Pods-Money Hungry.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4CDD1F0D2749FECC25861C /* Pods_Money_Hungry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D690E31FCE95F5A80BFF259 /* Pods_Money_HungryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13545AEA8E7E45FD27D53E1 /* Pods_Money_HungryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,11 +165,15 @@
 		2CEEDAB21CDBD2840079DBD7 = {
 			isa = PBXGroup;
 			children = (
+				2C0668371D184B7C00FDF028 /* gpg.framework */,
+				2C0668351D184B6900FDF028 /* gpg.bundle */,
 				2CEEDAF01CDBD3080079DBD7 /* images */,
 				2CEEDABD1CDBD2840079DBD7 /* BackaRyan_Proof */,
 				2CEEDAD61CDBD2840079DBD7 /* BackaRyan_ProofTests */,
 				2CEEDAE11CDBD2840079DBD7 /* BackaRyan_ProofUITests */,
 				2CEEDABC1CDBD2840079DBD7 /* Products */,
+				33C8B484F7C6A6B812F2D43C /* Pods */,
+				5D6171164AF5DEC6F53F1ABA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,9 +200,12 @@
 				2CA354B31CF765AE00744D93 /* HowToScene.swift */,
 				2CEEDAC41CDBD2840079DBD7 /* GameViewController.swift */,
 				2CEEDAC61CDBD2840079DBD7 /* Main.storyboard */,
+				2C1B34F31D12EE6D00F192E2 /* SignInViewController.swift */,
 				2CEEDAC91CDBD2840079DBD7 /* Assets.xcassets */,
 				2CEEDACB1CDBD2840079DBD7 /* LaunchScreen.storyboard */,
 				2CEEDACE1CDBD2840079DBD7 /* Info.plist */,
+				2C1B34EC1D11D3CC00F192E2 /* Money Hungry-Bridging-Header.h */,
+				2C1B35011D1352E500F192E2 /* GoogleService-Info.plist */,
 			);
 			path = BackaRyan_Proof;
 			sourceTree = "<group>";
@@ -196,6 +231,8 @@
 		2CEEDAF01CDBD3080079DBD7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2C1B34FF1D13370700F192E2 /* Share.png */,
+				2C1B34F51D12FC6D00F192E2 /* Leaderboard.png */,
 				2C9C26801D08C301002699F5 /* greenOrb.png */,
 				2C9C268A1D09E772002699F5 /* MainMenu.png */,
 				2C9C26861D08C316002699F5 /* Blip_Select.mp3 */,
@@ -223,6 +260,29 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		33C8B484F7C6A6B812F2D43C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FFED605A3AA5FFEB6522B0FF /* Pods-Money Hungry.debug.xcconfig */,
+				36D320D3C68CDBEA7F95B9E0 /* Pods-Money Hungry.release.xcconfig */,
+				B74EBF45998DF587F6228DCB /* Pods-Money HungryTests.debug.xcconfig */,
+				5CFE3861316E98A3FE1FF237 /* Pods-Money HungryTests.release.xcconfig */,
+				7C9721D5015D6B2A38FBD41B /* Pods-Money HungryUITests.debug.xcconfig */,
+				F9B7C2DAC605202DDD2AE29A /* Pods-Money HungryUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5D6171164AF5DEC6F53F1ABA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				502C9D84EAC98D2BC06246EB /* Pods_Money_Hungry.framework */,
+				CA744F32800135C2506393EB /* Pods_Money_HungryTests.framework */,
+				9AEF19D348BD761EE46C4F53 /* Pods_Money_HungryUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,9 +290,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CEEDAE71CDBD2840079DBD7 /* Build configuration list for PBXNativeTarget "Money Hungry" */;
 			buildPhases = (
+				6626258355F6E7F7AD02B360 /* [CP] Check Pods Manifest.lock */,
 				2CEEDAB71CDBD2840079DBD7 /* Sources */,
 				2CEEDAB81CDBD2840079DBD7 /* Frameworks */,
 				2CEEDAB91CDBD2840079DBD7 /* Resources */,
+				B4CAA9A466217CEAA2002DCF /* [CP] Embed Pods Frameworks */,
+				E8843AC4D9A89E8DEED39824 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,9 +310,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CEEDAEA1CDBD2840079DBD7 /* Build configuration list for PBXNativeTarget "Money HungryTests" */;
 			buildPhases = (
+				DDEAC5A058A1DE54350B2032 /* [CP] Check Pods Manifest.lock */,
 				2CEEDACF1CDBD2840079DBD7 /* Sources */,
 				2CEEDAD01CDBD2840079DBD7 /* Frameworks */,
 				2CEEDAD11CDBD2840079DBD7 /* Resources */,
+				852F47BAD1EF2085161BA65C /* [CP] Embed Pods Frameworks */,
+				0470D748C6172017829283D7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,9 +331,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CEEDAED1CDBD2840079DBD7 /* Build configuration list for PBXNativeTarget "Money HungryUITests" */;
 			buildPhases = (
+				FB5AB19B8A8ECBA837A084DD /* [CP] Check Pods Manifest.lock */,
 				2CEEDADA1CDBD2840079DBD7 /* Sources */,
 				2CEEDADB1CDBD2840079DBD7 /* Frameworks */,
 				2CEEDADC1CDBD2840079DBD7 /* Resources */,
+				0205FE5996510CA4B748B897 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,7 +359,7 @@
 				TargetAttributes = {
 					2CEEDABA1CDBD2840079DBD7 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 334K2K87LV;
+						DevelopmentTeam = 68226Q2WLZ;
 					};
 					2CEEDAD21CDBD2840079DBD7 = {
 						CreatedOnToolsVersion = 7.3;
@@ -330,6 +398,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C0668381D184B7C00FDF028 /* gpg.framework in Resources */,
+				2C0668361D184B6900FDF028 /* gpg.bundle in Resources */,
+				2C1B34F61D12FC6D00F192E2 /* Leaderboard.png in Resources */,
 				2CA354B81CF78C2F00744D93 /* Kane.png in Resources */,
 				2CEEDAF81CDBD3080079DBD7 /* bomb.png in Resources */,
 				2C9C26891D09E21E002699F5 /* drum.mp3 in Resources */,
@@ -346,6 +417,7 @@
 				2CA3546E1CF760E000744D93 /* NewGame.png in Resources */,
 				2CFD275B1CE3C3B600EB121F /* ground.png in Resources */,
 				2C9C26831D08C30F002699F5 /* redOrb.png in Resources */,
+				2C1B35021D1352E500F192E2 /* GoogleService-Info.plist in Resources */,
 				2CEEDACD1CDBD2840079DBD7 /* LaunchScreen.storyboard in Resources */,
 				2CF2898A1CEF6E15003DD0C6 /* reset.png in Resources */,
 				2CF289861CEE43DE003DD0C6 /* coin.atlasc in Resources */,
@@ -357,6 +429,7 @@
 				2CEEDACA1CDBD2840079DBD7 /* Assets.xcassets in Resources */,
 				2CA3546A1CF74E4400744D93 /* SplashScreen.png in Resources */,
 				2CEEDAC81CDBD2840079DBD7 /* Main.storyboard in Resources */,
+				2C1B35001D13370700F192E2 /* Share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +449,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0205FE5996510CA4B748B897 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Money HungryUITests/Pods-Money HungryUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0470D748C6172017829283D7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Money HungryTests/Pods-Money HungryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6626258355F6E7F7AD02B360 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		852F47BAD1EF2085161BA65C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Money HungryTests/Pods-Money HungryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4CAA9A466217CEAA2002DCF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Money Hungry/Pods-Money Hungry-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDEAC5A058A1DE54350B2032 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E8843AC4D9A89E8DEED39824 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Money Hungry/Pods-Money Hungry-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB5AB19B8A8ECBA837A084DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2CEEDAB71CDBD2840079DBD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -386,6 +582,7 @@
 				2CA354B41CF765AE00744D93 /* HowToScene.swift in Sources */,
 				2CF289821CEE3C2C003DD0C6 /* Bird.swift in Sources */,
 				2CA354B21CF7654D00744D93 /* CreditsScene.swift in Sources */,
+				2C1B34F41D12EE6D00F192E2 /* SignInViewController.swift in Sources */,
 				2CA3546C1CF75CA000744D93 /* MenuScene.swift in Sources */,
 				2CF289881CEE43E4003DD0C6 /* Coin.swift in Sources */,
 				2CEEDABF1CDBD2840079DBD7 /* AppDelegate.swift in Sources */,
@@ -528,36 +725,56 @@
 		};
 		2CEEDAE81CDBD2840079DBD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFED605A3AA5FFEB6522B0FF /* Pods-Money Hungry.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BackaRyan_Proof/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fullsail.BackaRyan-Proof";
 				PRODUCT_NAME = "Money Hungry";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Money Hungry-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		2CEEDAE91CDBD2840079DBD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36D320D3C68CDBEA7F95B9E0 /* Pods-Money Hungry.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BackaRyan_Proof/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fullsail.BackaRyan-Proof";
 				PRODUCT_NAME = "Money Hungry";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Money Hungry-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		2CEEDAEB1CDBD2840079DBD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B74EBF45998DF587F6228DCB /* Pods-Money HungryTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -571,6 +788,7 @@
 		};
 		2CEEDAEC1CDBD2840079DBD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CFE3861316E98A3FE1FF237 /* Pods-Money HungryTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = BackaRyan_ProofTests/Info.plist;
@@ -583,6 +801,7 @@
 		};
 		2CEEDAEE1CDBD2840079DBD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C9721D5015D6B2A38FBD41B /* Pods-Money HungryUITests.debug.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = BackaRyan_ProofUITests/Info.plist;
@@ -595,6 +814,7 @@
 		};
 		2CEEDAEF1CDBD2840079DBD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9B7C2DAC605202DDD2AE29A /* Pods-Money HungryUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = BackaRyan_ProofUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
