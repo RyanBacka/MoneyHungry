@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   let pauseBtn = SKSpriteNode(imageNamed: "pause_icon")
   let redOrb = SKSpriteNode(imageNamed: "redOrb")
   let greenOrb = SKSpriteNode(imageNamed: "greenOrb")
-  let mainMenuBtn = SKSpriteNode(imageNamed: "MainMenu")
+  let howToBtn = SKSpriteNode(imageNamed: "HowTo")
   let leaderboardBtn = SKSpriteNode(imageNamed: "Leaderboard")
   let shareBtn = SKSpriteNode(imageNamed: "Share")
   
@@ -279,27 +279,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   //creates the reset button
   func createMenu(){
     resetBtn.size = CGSizeMake(200, 100)
-    resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 9)
+    resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 5)
     resetBtn.zPosition = 6
-    resetBtn.setScale(0.6)
+    resetBtn.setScale(0.9 * widthRatio)
     self.addChild(resetBtn)
     
-    mainMenuBtn.size = CGSizeMake(200, 100)
-    mainMenuBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 3)
-    mainMenuBtn.zPosition = 6
-    mainMenuBtn.setScale(0.6)
-    self.addChild(mainMenuBtn)
+    
     
     leaderboardBtn.size = CGSizeMake(200, 100)
-    leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
+    leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 )
     leaderboardBtn.zPosition = 6
-    leaderboardBtn.setScale(0.6)
+    leaderboardBtn.setScale(0.9 * widthRatio)
     self.addChild(leaderboardBtn)
     
     shareBtn.size = CGSizeMake(200, 100)
-    shareBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 3)
+    shareBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 5)
     shareBtn.zPosition = 6
-    shareBtn.setScale(0.6)
+    shareBtn.setScale(0.9 * widthRatio)
     self.addChild(shareBtn)
   }
   
@@ -351,21 +347,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     createScene()
   }
   
-  func mainMenu(){
-    setHighScore(score)
-    self.removeAllChildren()
-    died = false
-    gameStarted = false
-    score = 0
-    level = 1
-    orbCount = 0
-    orbOn = false
-    orbLabel.text = "Orbs: \(orbCount)"
-    let menuScene = MenuScene(size: view!.bounds.size)
-    let transition = SKTransition.fadeWithDuration(0.15)
-    view?.presentScene(menuScene, transition: transition)
-  }
-  
   func dropBomb(duration:NSTimeInterval){
     let spawnBomb = SKAction.runBlock {
       ()in
@@ -404,25 +385,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         if resetBtn.containsPoint(touched){
           resetScene()
         }
-        if mainMenuBtn.containsPoint(touched){
-          mainMenu()
-        }
         if leaderboardBtn.containsPoint(touched){
           setHighScore(score)
           showLeader()
         }
         if shareBtn.containsPoint(touched){
+          let message = "I collected \(score) coins in Money Hungry. How many can you collect?"
           let controller = self.view?.window?.rootViewController as! GameViewController
-          
-          if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-            let facebookShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            facebookShare.setInitialText("I collected \(score) coins in Money Hungry. How many can you collect?")
-            controller.presentViewController(facebookShare, animated: true, completion: nil)
-          } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            controller.presentViewController(alert, animated: true, completion: nil)
-          }
+          let vc = UIActivityViewController(activityItems: [message], applicationActivities: nil)
+          controller.presentViewController(vc, animated: true, completion: nil)
         }
       }
     }
