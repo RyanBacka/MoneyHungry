@@ -32,7 +32,7 @@ class HowToScene: SKScene {
   let screenSize: CGRect = UIScreen.mainScreen().bounds
   var screenWidth = CGFloat()
   var widthRatio = CGFloat()
-
+  
   override func didMoveToView(view: SKView) {
     
     screenWidth = screenSize.width

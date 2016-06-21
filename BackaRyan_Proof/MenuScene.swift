@@ -9,18 +9,8 @@
 import SpriteKit
 import GameKit
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 class MenuScene: SKScene, GKGameCenterControllerDelegate{
-  
-=======
-class MenuScene: SKScene{
-  var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
->>>>>>> origin/master
-=======
-class MenuScene: SKScene{
-  var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
->>>>>>> origin/master
   
   // creation of button nodes
   let bgImage = SKSpriteNode(imageNamed: "Background")
@@ -90,18 +80,11 @@ class MenuScene: SKScene{
         let transition = SKTransition.fadeWithDuration(0.15)
         view?.presentScene(howToScene, transition: transition)
       } else if leaderboardBtn.containsPoint(touched){
-<<<<<<< HEAD
-<<<<<<< HEAD
         showLeader()
-=======
-        GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
->>>>>>> origin/master
-=======
-        GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
->>>>>>> origin/master
       }
     }
   }
+  
   
   func showLeader() {
     let vc = self.view?.window?.rootViewController
@@ -111,10 +94,7 @@ class MenuScene: SKScene{
   }
   
   //hides leaderboard screen
-  func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController)
-  {
+  func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController){
     gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
-    
   }
-  
 }

@@ -12,7 +12,7 @@ class CreditsScene: SKScene {
   // creates nodes
   let createdByLbl = SKLabelNode()
   let kane = SKSpriteNode(imageNamed: "Kane")
-
+  
   override func didMoveToView(view: SKView) {
     // sets the label for who developed it
     createdByLbl.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 15)

@@ -8,13 +8,8 @@
 
 import SpriteKit
 import Social
-<<<<<<< HEAD
-<<<<<<< HEAD
 import GameKit
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
 
 struct PhysicsCategory {
   static let birdCategory : UInt32  = 0x1 << 1
@@ -79,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   
   var coinCount1 = Int()
   var coinCount2 = Int()
+  var totalCoin = Int()
   
   let screenSize: CGRect = UIScreen.mainScreen().bounds
   var screenWidth = CGFloat()
@@ -87,17 +83,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   
   var orbOn = false
   var orbCount = 0
-                        
-  var leaderboardID = "CgkIv5mDu8YMEAIQBQ"
-  var kClientID = "431231126719-dajh1k7n7rms75g55mnggq0aqons2ii8.apps.googleusercontent.com"
   
-<<<<<<< HEAD
+  var authenticated = false
   
   let leaderboardID = "MHleaderboard62016"
-=======
->>>>>>> origin/master
+  let bombAch = GKAchievement.init(identifier: "firstBombExplosion")
+  let firstCoinAch = GKAchievement.init(identifier: "first50CoinGameMH")
+  let secondCoinAch = GKAchievement.init(identifier: "first100CoinGameMH")
+  let thirdCoinAch = GKAchievement.init(identifier: "first150CoinGameMH")
+  let grOrbAch = GKAchievement.init(identifier: "greenOrbEarnedMH")
+  let redOrbAch = GKAchievement.init(identifier: "redOrbEarnedMH")
+  let totCoinAch1 = GKAchievement.init(identifier: "total1000coinMH")
+  let totCoinAch2 = GKAchievement.init(identifier: "total2500coinMH")
+  let totCoinAch3 = GKAchievement.init(identifier: "total5000coinMH")
+  var achievementArray: [GKAchievement] = []
+  
   
   override func didMoveToView(view: SKView) {
+    if GKLocalPlayer.localPlayer().authenticated {
+      authenticated = true
+    }
+    
+    achievementArray = [bombAch, firstCoinAch, secondCoinAch, thirdCoinAch, grOrbAch, redOrbAch, totCoinAch1, totCoinAch2, totCoinAch3]
     //used to scale the images
     screenWidth = screenSize.width
     widthRatio = screenWidth/1080
@@ -274,74 +281,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     resetBtn.size = CGSizeMake(200, 100)
     resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 9)
     resetBtn.zPosition = 6
-    resetBtn.setScale(0.7)
+    resetBtn.setScale(0.6)
     self.addChild(resetBtn)
     
     mainMenuBtn.size = CGSizeMake(200, 100)
     mainMenuBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 3)
     mainMenuBtn.zPosition = 6
-    mainMenuBtn.setScale(0.7)
+    mainMenuBtn.setScale(0.6)
     self.addChild(mainMenuBtn)
     
     leaderboardBtn.size = CGSizeMake(200, 100)
-<<<<<<< HEAD
-<<<<<<< HEAD
     leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
-=======
-   leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
->>>>>>> origin/master
-=======
-   leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 9)
->>>>>>> origin/master
     leaderboardBtn.zPosition = 6
-    leaderboardBtn.setScale(0.7)
+    leaderboardBtn.setScale(0.6)
     self.addChild(leaderboardBtn)
     
     shareBtn.size = CGSizeMake(200, 100)
     shareBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - self.frame.height / 3)
     shareBtn.zPosition = 6
-    shareBtn.setScale(0.7)
+    shareBtn.setScale(0.6)
     self.addChild(shareBtn)
   }
   
-<<<<<<< HEAD
-<<<<<<< HEAD
   
   //send high score to leaderboard
   func setHighScore(score:Int) {
-    
     //check if user is signed in
-    if GKLocalPlayer.localPlayer().authenticated {
-      
-      let scoreReporter = GKScore(leaderboardIdentifier: leaderboardID) //leaderboard id here
-      
-      scoreReporter.value = Int64(score) //score variable here (same as above)
-      
+      let scoreReporter = GKScore(leaderboardIdentifier: leaderboardID)
+      scoreReporter.value = Int64(score)
       let scoreArray: [GKScore] = [scoreReporter]
-      
       GKScore.reportScores(scoreArray, withCompletionHandler: { (error) in
         if error != nil {
           print ("Error: \(error)")
         }
       })
-=======
- 
-  func setHighScore(){
-    print("You're here")
-    let newScore = GPGScore.init(leaderboardId: leaderboardID)
-    newScore.value = Int64(score)
-    newScore.scoreTag = "New High Score"
-    newScore.submitScoreWithCompletionHandler { (report, error) in
-      if report != nil{
-        print(report.description)
-        if report.isHighScoreForLocalPlayerToday == true{
-          print("Good JOb")
-        }
+    
+  }
+  
+  func setAchievements(achArray:[GKAchievement]){
+    GKAchievement.reportAchievements(achArray, withCompletionHandler: { (error) in
+      if error != nil {
+        print("Error reporting achievement: \(error)")
       } else {
-        print(error.description)
+        print("I reported: \(self.thirdCoinAch.percentComplete)")
       }
->>>>>>> origin/master
-    }
+    })
   }
   
   //hides leaderboard screen
@@ -349,38 +333,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   {
     gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     
-=======
- 
-  func setHighScore(){
-    print("You're here")
-    let newScore = GPGScore.init(leaderboardId: leaderboardID)
-    newScore.value = Int64(score)
-    newScore.scoreTag = "New High Score"
-    newScore.submitScoreWithCompletionHandler { (report, error) in
-      if report != nil{
-        print(report.description)
-        if report.isHighScoreForLocalPlayerToday == true{
-          print("Good JOb")
-        }
-      } else {
-        print(error.description)
-      }
-    }
->>>>>>> origin/master
   }
-
   
   // function to reset the scene
   func resetScene(){
-<<<<<<< HEAD
-<<<<<<< HEAD
     setHighScore(score)
-=======
-    setHighScore()
->>>>>>> origin/master
-=======
-    setHighScore()
->>>>>>> origin/master
     self.removeAllChildren()
     died = false
     gameStarted = false
@@ -395,15 +352,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   }
   
   func mainMenu(){
-<<<<<<< HEAD
-<<<<<<< HEAD
     setHighScore(score)
-=======
-    setHighScore()
->>>>>>> origin/master
-=======
-    setHighScore()
->>>>>>> origin/master
     self.removeAllChildren()
     died = false
     gameStarted = false
@@ -430,8 +379,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   }
   
   func showLeader() {
-    var vc = self.view?.window?.rootViewController
-    var gc = GKGameCenterViewController()
+    let vc = self.view?.window?.rootViewController
+    let gc = GKGameCenterViewController()
     gc.gameCenterDelegate = self
     vc?.presentViewController(gc, animated: true, completion: nil)
   }
@@ -459,26 +408,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
           mainMenu()
         }
         if leaderboardBtn.containsPoint(touched){
-<<<<<<< HEAD
-<<<<<<< HEAD
           setHighScore(score)
           showLeader()
-=======
-          setHighScore()
-          GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
->>>>>>> origin/master
-=======
-          setHighScore()
-          GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(leaderboardID)
->>>>>>> origin/master
         }
         if shareBtn.containsPoint(touched){
           let controller = self.view?.window?.rootViewController as! GameViewController
           
           if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            facebookSheet.setInitialText("I scored \(score) in the new Money Hungry App. What is your High Score?")
-            controller.presentViewController(facebookSheet, animated: true, completion: nil)
+            let facebookShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            facebookShare.setInitialText("I collected \(score) coins in Money Hungry. How many can you collect?")
+            controller.presentViewController(facebookShare, animated: true, completion: nil)
           } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -658,8 +597,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         secondBody.node!.removeFromParent()
         self.removeAllActions()
         died = true
+        if authenticated == true {
+          bombAch.percentComplete = bombAch.percentComplete + 100
+          if firstCoinAch.completed != true {
+            firstCoinAch.percentComplete = 0.0
+          }
+          if secondCoinAch.completed != true {
+            secondCoinAch.percentComplete = 0.0
+          }
+          if thirdCoinAch.completed != true{
+            thirdCoinAch.percentComplete = 0.0
+          }
+          setAchievements(achievementArray)
+        }
         createMenu()
-        
       }
     } else if orbOn == true{
       // handles if the bird hits a bomb while orb is on and turns orb off if last orb is used
@@ -722,6 +673,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         break
       }
       
+      if authenticated == true{
+        if firstCoinAch.completed != true{
+          firstCoinAch.percentComplete = firstCoinAch.percentComplete + 2.0
+          setAchievements(achievementArray)
+        }
+        if secondCoinAch.completed != true{
+          secondCoinAch.percentComplete = secondCoinAch.percentComplete + 1.0
+          setAchievements(achievementArray)
+        }
+        if thirdCoinAch.completed != true{
+          
+          thirdCoinAch.percentComplete = thirdCoinAch.percentComplete + 0.666666
+          if thirdCoinAch.percentComplete == 99.333234{
+            thirdCoinAch.percentComplete = 100
+          }
+          setAchievements(achievementArray)
+        }
+        
+        if totCoinAch1.completed != true{
+          totCoinAch1.percentComplete = totCoinAch1.percentComplete + 0.1
+          setAchievements(achievementArray)
+        }
+        if totCoinAch2.completed != true{
+          totCoinAch2.percentComplete = totCoinAch2.percentComplete + 0.04
+          setAchievements(achievementArray)
+        }
+        if totCoinAch3.completed != true{
+          totCoinAch3.percentComplete = totCoinAch3.percentComplete + 0.02
+          setAchievements(achievementArray)
+        }
+      }
+      
       if coinCount1 == 10 {
         coinCount1 = 0
         redOrbCreate()
@@ -742,6 +725,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       scoreLabel.text = "\(score)"
       coinCount1 = coinCount1 + 1
       coinCount2 = coinCount2 + 1
+      totalCoin = totalCoin + 1
       switch score{
       case 11:
         actionHappened = false
@@ -773,6 +757,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         break
       }
       
+      if authenticated == true{
+        if firstCoinAch.completed != true{
+          firstCoinAch.percentComplete = firstCoinAch.percentComplete + 2.0
+          setAchievements(achievementArray)
+        }
+        if secondCoinAch.completed != true{
+          secondCoinAch.percentComplete = secondCoinAch.percentComplete + 1.0
+          setAchievements(achievementArray)
+        }
+        if thirdCoinAch.completed != true{
+          thirdCoinAch.percentComplete = thirdCoinAch.percentComplete + 0.00666667
+          setAchievements(achievementArray)
+        }
+        
+        if totCoinAch1.completed != true{
+          totCoinAch1.percentComplete = totCoinAch1.percentComplete + 0.001
+          setAchievements(achievementArray)
+        }
+        if totCoinAch2.completed != true{
+          totCoinAch2.percentComplete = totCoinAch2.percentComplete + 0.0004
+          setAchievements(achievementArray)
+        }
+        if totCoinAch3.completed != true{
+          totCoinAch3.percentComplete = totCoinAch3.percentComplete + 0.0002
+          setAchievements(achievementArray)
+        }
+      }
+      
       if coinCount1 == 10 {
         coinCount1 = 0
         redOrbCreate()
@@ -793,6 +805,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount2 = 0
+      if authenticated == true {
+        if grOrbAch.completed != true{
+          grOrbAch.percentComplete = grOrbAch.percentComplete + 100.0
+          setAchievements(achievementArray)
+        }
+      }
     }
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory  && secondBody.categoryBitMask == PhysicsCategory.greenOrbCategory {
       blip.runAction(SKAction.play())
@@ -801,6 +819,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount2 = 0
+      if authenticated == true {
+        if grOrbAch.completed != true{
+          grOrbAch.percentComplete = grOrbAch.percentComplete + 100.0
+          setAchievements(achievementArray)
+        }
+      }
     }
     
     //handles if the bird hits the red orb
@@ -811,6 +835,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount1 = 0
+      if authenticated == true {
+        if redOrbAch.completed != true{
+          redOrbAch.percentComplete = redOrbAch.percentComplete + 100.0
+          setAchievements(achievementArray)
+        }
+      }
     }
     if firstBody.categoryBitMask == PhysicsCategory.birdCategory && secondBody.categoryBitMask == PhysicsCategory.redOrbCategory {
       blip2.runAction(SKAction.play())
@@ -819,6 +849,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount1 = 0
+      if authenticated == true {
+        if redOrbAch.completed != true{
+          redOrbAch.percentComplete = redOrbAch.percentComplete + 100.0
+          setAchievements(achievementArray)
+        }
+      }
     }
   }
   
