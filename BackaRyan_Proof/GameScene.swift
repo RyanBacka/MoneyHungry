@@ -103,8 +103,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     if GKLocalPlayer.localPlayer().authenticated {
       authenticated = true
     }
-    
     achievementArray = [bombAch, firstCoinAch, secondCoinAch, thirdCoinAch, grOrbAch, redOrbAch, totCoinAch1, totCoinAch2, totCoinAch3]
+    
+    for item in achievementArray{
+      item.showsCompletionBanner = true
+    }
     //used to scale the images
     screenWidth = screenSize.width
     widthRatio = screenWidth/1080
@@ -284,8 +287,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     resetBtn.setScale(0.9 * widthRatio)
     self.addChild(resetBtn)
     
-    
-    
     leaderboardBtn.size = CGSizeMake(200, 100)
     leaderboardBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 )
     leaderboardBtn.zPosition = 6
@@ -311,7 +312,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
           print ("Error: \(error)")
         }
       })
-    
   }
   
   func setAchievements(achArray:[GKAchievement]){
@@ -644,6 +644,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         break
       }
       
+      //Set the logic for achievements for the step up coin achievment in a single game and the
       if authenticated == true{
         if firstCoinAch.completed != true{
           firstCoinAch.percentComplete = firstCoinAch.percentComplete + 2.0
@@ -664,6 +665,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         
         if totCoinAch1.completed != true{
           totCoinAch1.percentComplete = totCoinAch1.percentComplete + 0.1
+          if totCoinAch1.completed == true{
+            totCoinAch2
+          }
           setAchievements(achievementArray)
         }
         if totCoinAch2.completed != true{
