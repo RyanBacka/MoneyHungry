@@ -100,11 +100,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
   
   
   override func didMoveToView(view: SKView) {
+    //checks to see if player is authenticated
     if GKLocalPlayer.localPlayer().authenticated {
       authenticated = true
     }
+    //assigns achievements to an array for reporting achievemnets
     achievementArray = [bombAch, firstCoinAch, secondCoinAch, thirdCoinAch, grOrbAch, redOrbAch, totCoinAch1, totCoinAch2, totCoinAch3]
-    
+    // sets achievements to show a banner when accomplished
     for item in achievementArray{
       item.showsCompletionBanner = true
     }
@@ -253,6 +255,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     
   }
   
+  // creates the green orb
   func greenOrbCreate(){
     let xPos = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * maxX
     greenOrb.position = CGPointMake(xPos, self.frame.height / 2 + self.frame.height / 2.2)
@@ -266,6 +269,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     addChild(greenOrb)
   }
   
+  //creates the red orb
   func redOrbCreate(){
     let xPos = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * maxX
     redOrb.position = CGPointMake(xPos, self.frame.height / 2 + self.frame.height / 2.2)
@@ -279,7 +283,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     addChild(redOrb)
   }
   
-  //creates the reset button
+  //creates the reset, leaderboard, and share button
   func createMenu(){
     resetBtn.size = CGSizeMake(200, 100)
     resetBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 5)
@@ -314,6 +318,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       })
   }
   
+  //sends percent complete to the achievements
   func setAchievements(achArray:[GKAchievement]){
     GKAchievement.reportAchievements(achArray, withCompletionHandler: { (error) in
       if error != nil {
@@ -347,6 +352,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     createScene()
   }
   
+  //randomly drops bomb based on delay
   func dropBomb(duration:NSTimeInterval){
     let spawnBomb = SKAction.runBlock {
       ()in
@@ -359,6 +365,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
     self.runAction(bombAction, withKey: "bombAction")
   }
   
+  //shows the leaderboard when called
   func showLeader() {
     let vc = self.view?.window?.rootViewController
     let gc = GKGameCenterViewController()
@@ -389,6 +396,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
           setHighScore(score)
           showLeader()
         }
+        //shares to mail, facebook, twitter, messages etc...
         if shareBtn.containsPoint(touched){
           let message = "I collected \(score) coins in Money Hungry. How many can you collect?"
           let controller = self.view?.window?.rootViewController as! GameViewController
@@ -568,6 +576,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         secondBody.node!.removeFromParent()
         self.removeAllActions()
         died = true
+        //resets the percentage back to zero if the amount of coins werent collected in one game
         if authenticated == true {
           bombAch.percentComplete = bombAch.percentComplete + 100
           if firstCoinAch.completed != true {
@@ -644,7 +653,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         break
       }
       
-      //Set the logic for achievements for the step up coin achievment in a single game and the
+      //Set the logic for achievements for the step up coin achievment in a single game and the total coins over many games in one game session
       if authenticated == true{
         if firstCoinAch.completed != true{
           firstCoinAch.percentComplete = firstCoinAch.percentComplete + 2.0
@@ -732,6 +741,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
         break
       }
       
+      //Set the logic for achievements for the step up coin achievment in a single game and the total coins over many games in one game session
       if authenticated == true{
         if firstCoinAch.completed != true{
           firstCoinAch.percentComplete = firstCoinAch.percentComplete + 2.0
@@ -780,6 +790,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount2 = 0
+      // sets the achievement for the green orb when collected
       if authenticated == true {
         if grOrbAch.completed != true{
           grOrbAch.percentComplete = grOrbAch.percentComplete + 100.0
@@ -794,6 +805,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount2 = 0
+      // sets the achievement for the green orb when collected
       if authenticated == true {
         if grOrbAch.completed != true{
           grOrbAch.percentComplete = grOrbAch.percentComplete + 100.0
@@ -810,6 +822,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount1 = 0
+      // sets the achievement for the red orb when collected
       if authenticated == true {
         if redOrbAch.completed != true{
           redOrbAch.percentComplete = redOrbAch.percentComplete + 100.0
@@ -824,6 +837,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GKGameCenterControllerDelega
       orbOn = true
       orbLabel.text = "Orbs: \(orbCount)"
       coinCount1 = 0
+      // sets the achievement for the red orb when collected
       if authenticated == true {
         if redOrbAch.completed != true{
           redOrbAch.percentComplete = redOrbAch.percentComplete + 100.0
